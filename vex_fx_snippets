@@ -1,0 +1,13 @@
+// Attrib transfer and del points by Cd threshold
+int handle = pcopen(@OpInput2, "P", @P, chf("max_dist"), chi("pts"));
+
+if (pcnumfound(handle) > 0) {
+    @Cd = pcfilter(handle, "Cd");
+    
+    // If the red channel of Cd is below 0.1, remove the point
+    if (@Cd.r < 0.1) {
+        removepoint(0, @ptnum);
+    }
+}
+
+pcclose(handle);
