@@ -1,0 +1,4 @@
+v@v = set(fit01(pow(rand(@ptnum),chf("pow")),chf("x_val1"),chf("x_val2")),
+       fit01(pow(rand(@ptnum),chf("pow")),chf("y_val1"),chf("y_val2")),
+       fit01(pow(rand(@ptnum),chf("pow")),chf("z_val1"),chf("z_val2")));
+@v*= chf("v_mult");
