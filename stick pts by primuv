@@ -1,0 +1,7 @@
+i@sourceprim;
+v@sourceprimuv;
+ 
+float d = xyzdist(1, v@P, i@sourceprim, v@sourceprimuv);
+vector pos = primuv(1, 'P', i@sourceprim, v@sourceprimuv);
+ 
+v@P = pos;
