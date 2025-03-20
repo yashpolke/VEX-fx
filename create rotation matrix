@@ -1,0 +1,37 @@
+///Create local matrix
+v@pos = v@P;
+ 
+vector zero = point(0, 'P', 0);
+vector one = point(0, 'P', 1);
+vector two = point(0, 'P', 2);
+ 
+v@x = normalize(one - zero);
+v@y = normalize(cross(v@x, (two - zero)));
+v@z = normalize(cross(v@x, v@y));
+ 
+///Create rotation matrix
+//Get vectors
+vector x = point(1, 'x', i@ptnum);
+vector y = point(1, 'y', i@ptnum);
+vector z = point(1, 'z', i@ptnum);
+ 
+//make 3x3 matrix current
+matrix3 m31 = set(v@x, v@y, v@z);
+//make 3x3 matrix destination
+matrix3 m32 = set(x, y, z);
+ 
+//matrix to extract
+matrix m4 = matrix(invert(m31) * m32);
+ 
+//extract rotation
+vector rotation = cracktransform(0, 0, 1, {0,0,0}, m4);
+ 
+vector pos1 = point(1, 'pos', i@ptnum);
+ 
+//get translation
+vector translate = pos1 - v@pos;
+ 
+//create rotation matrix
+4@xform = maketransform(0, 0, translate, rotation, {1,1,1}, v@pos, {0,0,0}, {0,0,0});
+ 
+///After use attribCopy to transfer rotation matrix attribute don't match P along with transform by attribute
