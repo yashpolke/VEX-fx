@@ -1,0 +1,10 @@
+// Remove point if red channel is below threshold
+if (@Cd.r <= chf("cd_thresh")) {
+    removepoint(0, @ptnum);
+}
+
+// If @Cd.r > 0, create a new point at @P and remove the associated primitive
+if (@Cd.r > 0) {
+    int new_pt = addpoint(geoself(), @P);
+    removeprim(geoself(), @primnum, true); // 'true' ensures points are deleted with the primitive
+}
