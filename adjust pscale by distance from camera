@@ -1,0 +1,8 @@
+float pow  = chf( 'pow' );
+ 
+vector cp = point( 1, 'P', 0 );
+float dist = distance( v@P, cp );
+ 
+v@Cd = pow( chramp( 'ramp', dist ), pow );
+ 
+f@pscale *= pow( chramp( 'ramp', dist ), pow );
