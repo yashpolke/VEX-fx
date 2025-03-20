@@ -1,0 +1,1 @@
+float delete_condition = (@ptnum % chi("modulus")) ? (removepoint( 0, @ptnum )):0;
