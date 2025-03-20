@@ -1,0 +1,14 @@
+vector min = {0, 0, 0};
+vector max = {0, 0, 0};
+getpointbbox(0, min, max);
+vector centroid = (max + min)/2.0;
+ 
+// Build and apply transformation matrix
+vector translate = centroid;
+vector rotate = chv('rotation');
+vector scale = chv('scale');
+matrix xform = invert(maketransform(0, 0, translate, rotate, scale));
+@P *= xform;
+ 
+// Store transformation matrix in attribute
+4@xform_matrix = xform;
