@@ -1,0 +1,2 @@
+matrix m = optransform(chs("cam"));
+@P *= m;
