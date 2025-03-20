@@ -1,0 +1,8 @@
+float @pscale = 0;
+vector @P;
+int @ptnum;
+ 
+float searchradius = @pscale * 2;
+ 
+if (len(pcfind(1, 'P', @P, searchradius, 1)))
+    removepoint(geoself(), @ptnum);
