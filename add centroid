@@ -1,0 +1,8 @@
+vector min, max;
+getbbox(min, max);
+
+// Compute the center of the bounding box
+vector center = 0.5 * (min + max);
+
+// Add a point at the center
+int new_pt = addpoint(geoself(), center);
