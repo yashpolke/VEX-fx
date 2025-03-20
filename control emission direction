@@ -1,0 +1,35 @@
+if(!haspointattrib(0, 'id')) i@id = i@ptnum;
+ 
+vector src    = getbbox_center(0);
+vector target = getbbox_center(1);
+ 
+//Get direction
+vector dir = `chs('change_dir')`1*normalize(target - src);
+ 
+//Get mmagnitude
+float mag = distance(src, target) * chf('magnitude_mult');
+ 
+//Set magnitude randomness
+float rand = fit01(rand(@ptnum), ch('rand_v_var_limitx'), ch('rand_v_var_limity'));
+int rndss = chi('randomness');
+vector condition = (rndss != 1) ? (v@v = dir * mag) : (v@v = dir * mag * rand);
+ 
+//Set directional randomness
+vector out = normalize(@P - src) * mag;
+int drndss = chi('directional_randomness');
+float bias = chf('bias');
+float dseed = chf('directional_seed');
+v@v = lerp(v@v, out, bias * rand(@ptnum+dseed));
+ 
+//Set initial random rotations
+float amount = radians(fit01(rand(@id), -ch('init_anglex'), ch('init_angley')));
+vector seed;
+seed.x = rand(@id+1);
+seed.y = rand(@id+2);
+seed.z = rand(@id+3);
+vector axis = fit01(rand(seed),{-1,-1,-1},{1,1,1});
+matrix rm=ident();
+rotate(rm, amount, axis);
+v@v = v@v * rm;
+v@w = vector(fit01(rand(@ptnum), ch('angular_w_varx'), ch('angular_w_vary'))) * length(v@v);
+p@orient = {0, 0, 0, 1};
