@@ -1,0 +1,6 @@
+vector ndc=toNDC(chs("get_camera"),@P);
+float ov = 0;
+@Cd = ndc;
+if(ndc[0]-ov<0 || ndc[0]+ov>1 || ndc[1]-ov<0 || ndc[1]+ov>1 || ndc[2]>0){
+   removepoint(geoself(),@ptnum);
+}
