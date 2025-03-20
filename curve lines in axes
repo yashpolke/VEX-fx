@@ -1,0 +1,14 @@
+float amp = chf( 'amp' );
+float pow = chf( 'pow' );
+ 
+float grad = pow( float( @ptnum ) / ( float( @numpt - 1 ) ), pow);
+ 
+// Cuve in axes
+int condition_x = ch( "axis" ) == 0;
+int condition_y = ch( "axis" ) == 1;
+int condition_z = ch( "axis" ) == 2;
+ 
+ 
+if ( condition_`chs( "axis" )` ) {
+    @P.`chs( "axis" )` `chs( "sign" )`= chramp( "ramp", grad ) * amp;
+    }
