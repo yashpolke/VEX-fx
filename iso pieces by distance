@@ -1,0 +1,15 @@
+float maxdist = chf( "maxDist" );
+int maxpoints = chi( "maxPoints" );
+ 
+i@pts = pcfind( s@OpInput2, "P", v@P, maxdist, maxpoints )[1];
+ 
+f@dist = distance( v@P, point( 1, "P", i@pts ) );
+ 
+if ( f@dist <= chf( "thresh" ) )
+{
+    @group_activeChunks = 1;
+}
+else
+{
+    @group_inactiveChunks = 1;
+}
