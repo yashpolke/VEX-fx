@@ -1,0 +1,5 @@
+float start = chf( 'start' );
+float end   = chf( 'end' );
+float duration = chf( 'duration' );
+ 
+if (@Frame < start || @Frame > end ) removepoint(0,@ptnum);
