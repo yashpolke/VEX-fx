@@ -1,0 +1,7 @@
+float e = chf('e');
+ 
+v@Cd = {0,0,0};
+ 
+float value = pow(1-relbbox(v@P).`chs('axis')`, e);
+ 
+setcomp(v@Cd, value, atoi(chs('num_component')));
