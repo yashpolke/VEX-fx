@@ -1,0 +1,20 @@
+// Get the closest matching point from input 1
+int near_pt = nearpoint(1, "P", @P);
+vector refP = point(1, "P", near_pt);
+
+// Fetch user-defined distances
+float xDist = chf("x_dist");
+float yDist = chf("y_dist");
+float zDist = chf("z_dist");
+
+// Determine if the point should be removed
+int shouldRemove = 0;
+
+if (@P.x < refP.x + xDist) shouldRemove = 1;
+if (@P.y < refP.y + yDist) shouldRemove = 1;
+if (@P.z > refP.z + zDist) shouldRemove = 1;
+
+// Remove the point if any condition is met
+if (shouldRemove) {
+    removepoint(0, @ptnum);
+}
