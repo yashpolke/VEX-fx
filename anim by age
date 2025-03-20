@@ -1,0 +1,22 @@
+float af = fit01(rand(@id), chf('startframe'), chf('endframe'));
+float life = chf('life');
+f@af = af;
+ 
+ 
+float anim_value = fit(@Frame, af, af+life, 0, 1);
+ 
+f@age = ((af + anim_value))%1;
+ 
+f@norm_age = f@age / life;
+ 
+float ramp = chramp('grad_ramp', clamp(f@grad*f@age,0,1));
+ 
+//f@test = f@grad * f@age;
+if(@Frame < af || @Frame >af+life){
+    v@Cd *= {0,0,0};       
+}
+else{
+    v@Cd *= ramp;
+ 
+//    v@Cd = ramp * f@grad * f@age;
+}
