@@ -1,0 +1,23 @@
+float angle      = chf('angle');
+vector axis      = chv('axis');
+vector translate = chv('translate');
+vector scale     = chv('scale');
+ 
+//store old position
+vector o_pos = @P;
+ 
+//extract matrix
+matrix m4 = primintrinsic(0, 'packedfulltransform', 0);
+ 
+//put to origin
+@P *= invert(m4);
+ 
+//make matrix for xforms
+matrix rm = ident();
+rotate(rm, angle, axis);
+translate(rm, translate);
+scale(rm, scale);
+setprimintrinsic(0, 'transform', i@primnum, rm, 'mult');
+ 
+//put it back
+@P = o_pos;
