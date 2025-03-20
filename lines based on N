@@ -1,0 +1,18 @@
+float radius = chf( "radius" );
+int maxpoints = chi( "maxpoints" );
+vector normal = point( 1, "N", i@ptnum );
+
+int nearpts[] = nearpoints( s@OpInput1, v@P, radius, maxpoints );
+
+if ( normal != 0 ){
+   foreach( int pt; nearpts ){
+       if ( pt < i@ptnum )
+       {
+           int prim = addprim( 0, "polyline" );
+           addvertex( 0, prim, i@ptnum );
+           addvertex( 0, prim, pt );
+
+       }
+   }
+}
+if ( i@primnum != -1 )( v@Cd = { 1,0,0 } );
