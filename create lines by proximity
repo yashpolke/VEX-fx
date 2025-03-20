@@ -1,0 +1,11 @@
+float maxdist = chf( 'maxdist' );
+// Create an array of points to be queried
+int nearpts[] = nearpoints( 0, v@P, maxdist );
+ 
+foreach( int pt; nearpts ){
+    if( pt != i@ptnum ){
+        int line = addprim( 0, 'polyline' );
+        addvertex( 0, line, i@ptnum );
+        addvertex( 0, line, pt );
+        }
+}
