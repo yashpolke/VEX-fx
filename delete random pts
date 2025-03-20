@@ -1,0 +1,4 @@
+if( rint(rand(@`chs("attrib")` + ch("seed")) + fit(ch("delete_percentage"), 0, 100, -0.5, 0.5)) == 1)
+{
+   removepoint(0, @ptnum);
+}
