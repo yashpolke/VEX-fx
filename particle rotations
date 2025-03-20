@@ -1,0 +1,11 @@
+v@N = normalize(fit01(rand(@ptnum+1), (vector) -1, (vector) 1));
+ 
+f@rot_mag = fit01(rand(@ptnum+2), ch("rot_min"), ch("rot_max"));
+ 
+v@rot_axis = fit01(rand(@ptnum+3), (vector) 1, (vector) -1);
+v@rot_axis = normalize(v@rot_axis);
+ 
+f@pscale = fit01(chramp("pscaleRamp", rand(@ptnum+4)), ch("pscale_min"), ch("pscale_max"));
+ 
+ 
+v@v += v@N * 0.1;
