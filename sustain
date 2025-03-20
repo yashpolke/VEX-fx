@@ -1,0 +1,11 @@
+float frame = @Frame;
+float fInterval1 = chf( "fInt1" );
+float fInterval2 = chf( "fInt2" );
+ 
+@i = fit01( sin (floor( @Frame ) ),$RFSTART,$RFEND  );
+@u = fit01( rint( rand( i@ptnum ) ),1,50 ) * fit01( anoise( @Time ),0,1 );
+ 
+if ( @i <= chf( "iThresh" ) || @u>= chf( "uThresh" )  )
+{
+    removepoint( 0, i@ptnum );  
+}
