@@ -1,0 +1,1 @@
+@pscale = fit01(pow(rand(@ptnum),chf("pow")),chf("pscale1"),chf("pscale2"));
