@@ -1,0 +1,1 @@
+v@Cd = pow( 1 - relbbox( geoself(), v@P )[1], chf( "pow" ) );
