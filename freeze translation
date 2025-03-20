@@ -1,0 +1,4 @@
+vector staticPos = point( 1, "P", chi( "pt_on_mesh" ) );
+vector movingPos = point( 0, "P", chi( "pt_on_mesh" ) );
+
+v@P -= movingPos - staticPos
