@@ -1,0 +1,7 @@
+// Compute the distance from the camera point and remap it
+f@camDist = fit01(distance(@P, chv("cam_point")), 0, chf("cam_dist"));
+
+// Check if the distance condition is met and remove the point
+if (length(@P) < @camDist) {
+    removepoint(0, @ptnum);
+}
