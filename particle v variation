@@ -1,0 +1,35 @@
+//ID ATTRIBUTE
+if (!hasattrib(0, 'point', 'id')) i@id = int(i@ptnum + @Frame);
+ 
+//PREOFFSET
+v@P += v@v * (@TimeInc * rand(@id) * ch("preoffset"));
+ 
+//ANGLE VARIATION
+float amount = radians(fit01(rand(@id), -ch("angle"), ch("angle")));
+vector seed;
+seed.x = rand(@id+1);
+seed.y = rand(@id+2);
+seed.z = rand(@id+3);
+ 
+vector axis = fit01(rand(seed),{-1,-1,-1},{1,1,1});
+matrix rm=ident();
+rotate(rm, amount, axis);
+v@v = v@v * rm;
+ 
+//MAGNITUDE VARIATION
+v@v *= fit01(rand(@id),ch("min"),ch("max"));
+ 
+//ADDITIONAL VEL DIRECTION
+vector v_dir0 = normalize(v@v);
+vector v_dir1 = chv("dir1");
+vector v_dir2 = chv("dir2");
+if (ch("dir1_isRefPoint")) v_dir1 = normalize(v@P - v_dir1);
+if (ch("dir2_isRefPoint")) v_dir2 = normalize(v@P - v_dir2);
+vector v_dir = normalize(v_dir0*ch("dir0Weight") + v_dir1*ch("dir1Weight") + v_dir2*ch("dir2Weight"));
+ 
+//CLAMP TO MAX VEL
+float v_mag = clamp(length(v@v), 0, ch("maxvel"));
+v@v = v_dir * v_mag;
+ 
+//POST OFFSET
+v@P += v@v * (@TimeInc * rand(@id) * ch("postoffset"));
