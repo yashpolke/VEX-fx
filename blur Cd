@@ -1,0 +1,12 @@
+// User-defined parameters
+float searchDist = chf("dist");
+int maxPoints = chi("numpts");
+
+// Open a point cloud search in the current geometry (Input 0)
+int handle = pcopen(0, "P", @P, searchDist, maxPoints);
+
+// Filter and blend color from nearby points
+@Cd = pcfilter(handle, "Cd");
+
+// Close the point cloud lookup (optional for clarity)
+pcclose(handle);
