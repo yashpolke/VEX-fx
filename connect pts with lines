@@ -1,0 +1,31 @@
+float searchradius = chf("searchradius");
+int haspscale = haspointattrib(0, 'pscale');
+
+
+int points[];
+float @pscale = 1.0;
+
+
+if (haspscale && !chi("uniformradius"))
+{
+   points = pcfind_radius(0, "P", "pscale", searchradius, @P, searchradius*@pscale, chi("../maxsearchpoints"));
+}
+else
+{
+   points = pcfind(0, "P", @P, 2*searchradius*@pscale, chi("maxsearchpoints"));
+}
+
+
+foreach(int ptj; points)
+{
+   if(@ptnum == ptj)
+       continue;
+      
+   // Only connect one direction
+   if (ptj < @ptnum)
+       continue;
+      
+   int prim = addprim(geoself(), "polyline");
+  
+   addvertex(geoself(), prim, @ptnum);
+   addvertex(geoself(), prim, ptj);
