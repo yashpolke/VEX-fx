@@ -1,0 +1,7 @@
+matrix rm=ident();
+rotate(rm, radians(f@rot_mag), v@rot_axis);
+ 
+v@N = normalize(v@N * rm);
+v@w = (v@rot_axis * radians(f@rot_mag) * (1/@TimeInc));
+ 
+v@up = cross(v@N, v@rot_axis);
