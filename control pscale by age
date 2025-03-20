@@ -1,0 +1,11 @@
+float pow  = chf( 'exponent' );
+float mult = chf( 'mult' );
+ 
+// Declare pscale
+f@pscale = fit01(pow(rand(@ptnum * chf( "seed" ) ),chf("pow")),chf("pscale1"),chf("pscale2"));
+ 
+//Mult pscale by age
+f@pscale *= pow( chramp( 'ageRamp', f@nage ), pow ) * mult;
+ 
+//Viz
+v@Cd = f@pscale;
