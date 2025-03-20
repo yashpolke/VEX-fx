@@ -1,0 +1,17 @@
+int seed = chi('seed');
+ 
+vector4 __orient = point(1, 'orient', i@ptnum);
+matrix3 __rm     = qconvert(__orient);
+float __pscale   = point(1, 'pscale', i@ptnum);
+ 
+//match position to points
+v@P = point(1, 'P', i@ptnum+seed);
+ 
+//make identity matrix for scaling
+matrix3 __im   = ident();
+vector __scale = set(__pscale, __pscale, __pscale);
+scale(__im, __scale);
+__rm *= __im;
+ 
+//set transform matrix
+setprimintrinsic(geoself(), 'transform', i@primnum, __rm, 'mult');
