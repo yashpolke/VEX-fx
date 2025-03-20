@@ -1,0 +1,8 @@
+float angle = rand(@ptnum) * 360;
+angle = radians(angle);
+vector axis = {0,1,0};
+matrix3 m = ident();
+
+rotate(m, angle, axis);
+
+@orient = quaternion(m);
