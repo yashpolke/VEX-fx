@@ -1,0 +1,19 @@
+float x_angle = chf( 'x_angle' );
+float y_angle = chf( 'y_angle' );
+float z_angle = chf( 'z_angle' );
+ 
+vector x_axis = chv( 'x_axis' );
+vector y_axis = chv( 'y_axis' );
+vector z_axis = chv( 'z_axis' );
+ 
+vector4 xquats = quaternion( x_angle, x_axis );
+vector4 yquats = quaternion( y_angle, y_axis );
+vector4 zquats = quaternion( z_angle, z_axis );
+ 
+matrix3 x_rotationMatrix = qconvert( xquats );
+matrix3 y_rotationMatrix = qconvert( yquats );
+matrix3 z_rotationMatrix = qconvert( zquats );
+ 
+v@v *= x_rotationMatrix;
+v@v *= y_rotationMatrix;
+v@v *= z_rotationMatrix;
