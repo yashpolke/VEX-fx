@@ -1,0 +1,17 @@
+int maxObjs = detail(1, chs("../__prom_attr_to_max/outname"), 0);
+@sumarea = 0;
+for(int i = 0; i < (maxObjs+1); i++)
+   {
+       if(@`chs("../connectivity__/attribname")` == i)
+       {
+           for(int pt = 0; pt < @numpt; pt+=1)
+           {
+               float aClass = prim(0, chs("../connectivity__/attribname"), pt);
+               float anArea = prim(0, "area", pt);
+                   if(aClass == i)
+                   {
+                       @sumarea += anArea;
+                   }
+           }
+       }
+   }
