@@ -1,0 +1,9 @@
+vector up = { 0,1,0 };
+
+
+vector initN = cross( v@N, up );
+vector postN = cross( initN, up );
+
+matrix3 mat  = lookat( { 0,0,0 }, postN );
+ 
+p@rot = quaternion( mat );
