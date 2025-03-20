@@ -1,0 +1,18 @@
+float result;
+//float sdfValue;
+
+float sdfValue = volumesample( s@OpInput2, 0, v@P);
+
+if ( atoi(chs( "choose" )) == 0 )
+{
+   result = ( sdfValue > 0.0 );
+}
+else
+{
+   result = ( sdfValue < 0.0 );
+}
+
+if ( int( result ) )
+{
+   removepoint( geoself(), i@ptnum );
+}
