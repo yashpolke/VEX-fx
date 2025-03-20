@@ -1,0 +1,12 @@
+int closept[] = pcfind(0, "P", @P, ch("max_dist"), chi("max_pts"));
+
+// Ensure we have valid neighbors before modifying @P
+if (len(closept) > 0) {
+    vector sumP = {0, 0, 0}; 
+    
+    foreach (int ptnum; closept) {
+        sumP += point(0, "P", ptnum);
+    }
+    
+    @P = sumP / len(closept);
+}
