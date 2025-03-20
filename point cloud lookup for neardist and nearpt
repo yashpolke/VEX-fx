@@ -1,0 +1,16 @@
+float radius = ch("radii");
+int maxpoints = ch("max_points");
+float cone = cos(radians(ch("cone")));
+float max_dist = ch("dist");
+
+int handle = pcopen(@OpInput1, "P", @P, "N", @N, radius, maxpoints, "ndot", cone, "preload", 1);
+
+// Ensure a valid neighbor exists before accessing data
+if (pcnumfound(handle) > 0) {
+    @dist = pcimportbyidxf(handle, "point.distance", 1);
+    i@nearpt = pcimportbyidxi(handle, "point.number", 1);
+
+    if (@dist > max_dist) {
+        removepoint(0, @ptnum);
+    }
+}
