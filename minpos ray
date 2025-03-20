@@ -1,0 +1,7 @@
+float d = chf('distance');
+ 
+int nearpoint = nearpoint(1, @P);
+ 
+vector nearpos = point(1, 'P', nearpoint);
+ 
+@P = minpos(1, nearpos, d);
