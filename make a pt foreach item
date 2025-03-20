@@ -1,0 +1,26 @@
+float x[];
+float y[];
+float z[];
+
+int num;
+int maxCount = findattribvalcount( 0, "point", "class", i@class );
+for ( int i = 0; i < maxCount; i++ )
+{
+   num = findattribval( 0, "point", "class", i@class, i );
+   vector pt = point( 0, "P", num );
+  
+   x[i] = pt.x;
+   y[i] = pt.y;
+   z[i] = pt.z;
+   removeprim( 0, num, 0 );
+}
+vector posmin = set( min(x), min(y), min(z) );
+vector posmax = set( max(x), max(y), max(z) );
+
+vector midpt = set(
+               ((posmin.x + posmax.x )/ 2),
+               ((posmin.y + posmax.y )/ 2 ),
+               ((posmin.z + posmax.z )/ 2 ) );
+
+
+v@P = midpt;
