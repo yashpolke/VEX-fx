@@ -1,0 +1,5 @@
+vector center = chv( "center" );
+
+v@v = ( v@P - center ) * { 1,0,1 };
+
+v@v *= 1;
