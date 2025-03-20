@@ -1,0 +1,17 @@
+float bias = chf('bias');
+float e_corr = chf('e_corr');
+ 
+vector primpos;
+float u, v;
+ 
+int nearpoint  = nearpoint(1, v@P);
+//vector nearpos = normalize(v@P - point(1, 'P', nearpoint));
+ 
+vector orig = v@P;
+//vector dir = nearpos;
+vector dir = normalize(point(1, 'N', nearpoint));
+ 
+int prim_num = intersect(1, orig, dir, primpos, u, v);
+ 
+v@P += dir*e_corr;
+v@P = lerp(primpos, v@P, bias);
