@@ -1,0 +1,9 @@
+float freq = chf( "freq" );
+float amp = chf( "amp" );
+float speed = chf( "speed" );
+
+
+float grad = float( @ptnum ) / ( float( @numpt - 1 ) );
+
+
+@P.y += chramp( "ramp", grad ) * sin(((-@Frame * speed)+@ptnum) / freq) /  amp;;
