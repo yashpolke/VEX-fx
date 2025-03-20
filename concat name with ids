@@ -1,0 +1,1 @@
+s@name = concat("`chs("get_id")`_", itoa(int(i@`chs("get_id")`))); 
