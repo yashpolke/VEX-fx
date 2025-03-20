@@ -1,2 +1,2 @@
-# VEX-fx
-houdini fxtd vex codes
+# VEX
+Houdini vex for point and prim wrangles.
