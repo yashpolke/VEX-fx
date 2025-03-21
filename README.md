@@ -1,2 +1,2 @@
 # VEX
-Houdini vex for point and prim wrangles.
+Houdini vex for point and prim wrangles
